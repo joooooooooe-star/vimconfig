@@ -4,8 +4,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'Vim-Latex/vim-latex'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-syntastic/syntastic'
@@ -30,3 +32,20 @@ au BufNewFile,BufRead *.py
 
 call vundle#end()
 filetype plugin indent on
+
+func! WordProcessor()
+	" movement changes
+	map j gj
+	map k gk
+	setlocal formatoptions=1
+	setlocal noexpandtab
+	setlocal wrap
+	setlocal linebreak
+
+	" spelling and thesaurus
+	
+	setlocal spell spelllang=en_us
+	set complete+=s
+endfu
+
+com! WP call WordProcessor()
